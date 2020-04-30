@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/sqlite_update_titles"
+        android:orientation="horizontal"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/name"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/sqlite_update_name"
+            android:layout_marginStart="15dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_maxcredit"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/sqlite_update_titles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/credit"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/sqlite_update_credit"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sqlite_update_button"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/icon_update"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <Button
+        android:layout_below="@id/sqlite_update_button"
+        android:id="@+id/sqlite_delete_button"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/delete_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+
+    <ImageView
+        android:background="@color/colorPrimaryDark"
+        android:layout_below="@id/sqlite_delete_button"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"/>
+
+</RelativeLayout>

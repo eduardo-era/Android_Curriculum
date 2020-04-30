@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SqliteFragmentCreate">
+
+    <TextView
+        android:id="@+id/sqlite_create_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:text="@string/enter_client"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/sqlite_cleate_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/sqlite_create_title"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle_edge_blue"
+        android:gravity="center"
+        android:hint="@string/enter_name"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/sqlite_create_crdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/sqlite_cleate_name"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle_edge_blue"
+        android:digits="0123456789"
+        android:gravity="center"
+        android:hint="@string/enter_amount"
+        android:imeOptions="actionDone"
+        android:inputType="numberDecimal"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/sqlite_create_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/sqlite_create_crdit"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorPrimary"
+        android:elevation="2dp"
+        android:text="@string/insert"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

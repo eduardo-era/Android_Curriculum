@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="splash_title">Eduardo\nCV</string>
+    <string name="name">Nombre:</string>
+    <string name="credit">Credito:</string>
+    <string name="information">Infotmación</string>
+    <string name="no_internet">Por favor conectate a internet</string>
+
+    <!--Main Activity-->
+    <string name="activity_main_title">INICIO</string>
+    <string name="sqlite">SQLite</string>
+    <string name="firebase">Firebase</string>
+
+    <!--SQLITE-->
+    <string name="sqlite_crud">SQLite CRUD</string>
+    <string name="enter_client">Ingresa un Cliente</string>
+    <string name="enter_name">Ingresa un nombre</string>
+    <string name="enter_amount">Ingresa un monto</string>
+    <string name="empty_fields">Faltan campos por llenar</string>
+    <string name="insert">INSERTAR</string>
+
+    <!--Firebase-->
+
+</resources>

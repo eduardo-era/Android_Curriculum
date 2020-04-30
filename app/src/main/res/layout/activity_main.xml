@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/all_main_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.MainActivity">
+
+    <TextView
+        android:id="@+id/main_textview_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:text="@string/activity_main_title"
+        android:textColor="@color/white"
+        android:textSize="35sp" />
+
+    <RelativeLayout
+        android:id="@+id/main_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_textview_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+
+            <Button
+                android:id="@+id/main_button_sqlite"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_corners_edge_blue"
+                android:elevation="2dp"
+                android:text="@string/sqlite"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/main_button_firebase"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_corners_edge_blue"
+                android:elevation="2dp"
+                android:text="@string/firebase"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutButtons"
+        android:layout_below="@id/main_textview_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="30dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/main_button_curriculum"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginHorizontal="50dp"
+                android:background="@drawable/rounded_corners_edge_blue"
+                android:text="Curriculum" />
+
+            <Button
+                android:id="@+id/main_button_phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="22sp"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/rounded_corners_edge_blue"
+                android:text="Telefono" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/main_floatting_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/plus_white" />
+
+</RelativeLayout>
