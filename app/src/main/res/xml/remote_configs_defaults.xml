@@ -6,5 +6,17 @@
         <value>Firebase</value>
     </entry>
 
+    <entry>
+        <key>cloud_messaging</key>
+        <value>Cloud Messaging</value>
+    </entry>
+
+    <entry>
+        <key>firebase_information</key>
+        <value>\bREMOTE CONFIG\b
+            \n\nTodos los trextos en esta  actividad incluyendo botones y
+            este mismo texto son traidos a travez de Remote Config.\n\n</value>
+    </entry>
+
 
 </defaultsMap><!-- END xml_defaults -->

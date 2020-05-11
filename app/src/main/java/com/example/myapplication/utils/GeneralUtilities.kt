@@ -4,6 +4,8 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.net.ConnectivityManager
+import android.os.Build
+import android.text.Html
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
@@ -31,6 +33,14 @@ class GeneralUtilities {
             return networkInfo != null && networkInfo.isAvailable && networkInfo.isConnected
         }
 
+        fun formatHTML(value: String, textview: TextView) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                textview.text = Html.fromHtml(value, Html.FROM_HTML_MODE_LEGACY)
+            } else {
+                textview.text = Html.fromHtml(value)
+            }
+        }
+
         fun informationDialog(activity: Activity,content: String){
             val dialog = AlertDialog.Builder(activity)
             val viewInformation = activity.layoutInflater.inflate(R.layout.dialog_information, null)
@@ -39,7 +49,7 @@ class GeneralUtilities {
             val buttonDialog = viewInformation.findViewById<Button>(R.id.information_button)
 
             if(content.isNotEmpty()){
-                contentDialog.text = content
+                contentDialog.text = String.format(content)
             }
 
             dialog.setView(viewInformation)

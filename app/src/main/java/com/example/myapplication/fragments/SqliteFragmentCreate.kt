@@ -38,8 +38,8 @@ class SqliteFragmentCreate : Fragment() {
     private fun clearData(){
         sqliteCreateAmount!!.text.clear()
         sqliteCreateName!!.text.clear()
-        sqliteCreateName!!.hint = String.format(R.string.enter_name.toString())
-        sqliteCreateAmount!!.hint = String.format(R.string.enter_amount.toString())
+        sqliteCreateName!!.hint = resources.getString(R.string.enter_name)
+        sqliteCreateAmount!!.hint = resources.getString(R.string.enter_amount)
     }
 
     private fun clickCreateButton(){

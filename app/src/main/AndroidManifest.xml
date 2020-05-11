@@ -26,6 +26,7 @@
         <activity android:name=".views.FirebaseActivity" />
         <activity android:name=".views.RetrofitActivity" />
         <activity android:name=".views.CvPdfView" />
+        <activity android:name=".views.RealtimeDatabaseView" />
 
         <service android:name=".utils.PushNotification"
             android:exported="false">

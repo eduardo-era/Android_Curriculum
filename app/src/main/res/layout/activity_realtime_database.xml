@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/realtime_database_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/realtime_title_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/realtime_database_help"
+            android:paddingStart="20dp"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/realtime_database_help"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_info"
+            android:contentDescription="@string/information" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/enter_container"
+        android:layout_below="@id/realtime_database_toolbar"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/realtime_database_cleate_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_edge_blue"
+            android:gravity="center"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/realtime_database_create_crdit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_edge_blue"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/realtime_database_create_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/colorPrimary"
+            android:elevation="2dp"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:layout_below="@id/enter_container"-->
+<!--        android:id="@+id/expandable_layout_realtime_database"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:orientation="vertical"-->
+<!--        tools:layout_editor_absoluteX="8dp"-->
+<!--        tools:layout_editor_absoluteY="8dp">-->
+
+<!--        <include layout="@layout/bottom_sheet_recycler" />-->
+
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
+</RelativeLayout>

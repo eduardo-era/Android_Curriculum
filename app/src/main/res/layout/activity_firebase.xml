@@ -32,4 +32,26 @@
             android:contentDescription="@string/information" />
     </RelativeLayout>
 
+    <Button
+        android:id="@+id/firebase_button_cloud_message"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/firebase_toolbar"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/firebase_button_real_time_database"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/firebase_button_cloud_message"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
 </RelativeLayout>
