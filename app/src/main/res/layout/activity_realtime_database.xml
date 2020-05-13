@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/realtime_database_toolbar"
@@ -36,10 +36,23 @@
 
     <LinearLayout
         android:id="@+id/enter_container"
-        android:layout_below="@id/realtime_database_toolbar"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/realtime_database_toolbar"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/realtime_database_cleate_id"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_edge_blue"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/realtime_database_cleate_name"
@@ -49,6 +62,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/rectangle_edge_blue"
             android:gravity="center"
+            android:imeOptions="actionNext"
             android:singleLine="true" />
 
         <EditText
@@ -58,7 +72,7 @@
             android:layout_marginHorizontal="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/rectangle_edge_blue"
-            android:digits="0123456789"
+            android:digits="0123456789."
             android:gravity="center"
             android:imeOptions="actionDone"
             android:inputType="numberDecimal"
@@ -69,24 +83,24 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="15dp"
             android:background="@color/colorPrimary"
             android:elevation="2dp"
             android:textColor="@color/white" />
     </LinearLayout>
 
-<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
-<!--        android:layout_below="@id/enter_container"-->
-<!--        android:id="@+id/expandable_layout_realtime_database"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:orientation="vertical"-->
-<!--        tools:layout_editor_absoluteX="8dp"-->
-<!--        tools:layout_editor_absoluteY="8dp">-->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/expandable_layout_realtime_database"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/enter_container"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
-<!--        <include layout="@layout/bottom_sheet_recycler" />-->
+        <include layout="@layout/bottom_sheet_recycler" />
 
-<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>

@@ -2,29 +2,35 @@ package com.example.myapplication.views
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.adapters.FirebaseAdapter
 import com.example.myapplication.helpers.RemoteConfigHelper
 import com.example.myapplication.interfaces.RealtimeDatabase
+import com.example.myapplication.pojos.Customers
 import com.example.myapplication.presenters.RealtimeDatabasePresenter
 import com.example.myapplication.utils.BaseActivity
+import com.example.myapplication.utils.GeneralUtilities
 import kotlinx.android.synthetic.main.activity_realtime_database.*
-import kotlinx.android.synthetic.main.sqlite_update_customers_dialog.view.*
-import java.time.temporal.TemporalAmount
+import java.util.ArrayList
 
 class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
 
     private val presenter = RealtimeDatabasePresenter(this)
+    private var recyclerFirebase: RecyclerView? = null
 
-    var hintName: String? = null
-    var hintAmount: String? = null
+    private var hintId: String? = null
+    private var hintName: String? = null
+    private var hintAmount: String? = null
     var name: String? = null
     var amount: String? = null
+    var id: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,19 +39,23 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
     }
 
     private fun init(){
+        recyclerFirebase = findViewById(R.id.recyclerView)
         setRemoteConfigResources()
         hintText()
         clickSendRealtime()
+        getDataRealtime()
     }
 
     private fun setRemoteConfigResources(){
         realtime_title_toolbar.text = RemoteConfigHelper().realtimeDatabase
+        hintId = RemoteConfigHelper().ingressId
         hintName = RemoteConfigHelper().ingressName
         hintAmount = RemoteConfigHelper().ingressAmount
         realtime_database_create_button.text = RemoteConfigHelper().send
     }
 
     private fun hintText(){
+        realtime_database_cleate_id.hint = hintId
         realtime_database_cleate_name.hint = hintName
         realtime_database_create_crdit.hint = hintAmount
     }
@@ -56,51 +66,72 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
         }
     }
 
+    private fun getDataRealtime() {
+        presenter.getDataRealtime()
+    }
+
     private fun sendToRealtime(){
+        id = realtime_database_cleate_id.text.toString()
         name = realtime_database_cleate_name.text.toString()
         amount = realtime_database_create_crdit.text.toString()
+        realtime_database_cleate_id.text.clear()
         realtime_database_cleate_name.text.clear()
         realtime_database_create_crdit.text.clear()
         hintText()
-        presenter.sendDataToRealtime(name!!, amount!!)
+        presenter.sendDataToRealtime(id!!, name!!, amount!!)
+        showProgress()
     }
 
     override fun fieldsEmpty() {
         Toast.makeText(this,resources.getString(R.string.empty_fields),Toast.LENGTH_SHORT).show()
+        dismissProgress()
+    }
+
+    override fun realtimeObtainedCustomers(customers: ArrayList<Customers>) {
+        val adapter = FirebaseAdapter(customers, this)
+        recyclerFirebase!!.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, true)
+        recyclerFirebase!!.adapter = adapter
+    }
+
+    override fun deleteDataRealtime(id: String) {
+        presenter.deleteDataRealtime(id)
     }
 
     override fun dataSended() {
         Toast.makeText(this,resources.getString(R.string.client_sended),Toast.LENGTH_SHORT).show()
+        dismissProgress()
+        GeneralUtilities.hideKeyboardFrom(this, realtime_database_create_crdit)
     }
 
-    override fun valuesExist() {
+    override fun valuesExist(id:String, name: String, amount: String) {
         AlertDialog.Builder(this).setTitle("ATENCIÓN")
-            .setMessage("El id de cliente que ha ingresado ya existe").setPositiveButton("Actualizar", DialogInterface.OnClickListener { _, _ ->
-                updateDataCustomer(name!!,amount!!)
-            })
-            .setNegativeButton("Ingresar uno nuevo", DialogInterface.OnClickListener { Dialog, _ ->
+            .setMessage("El id de cliente que ha ingresado ya existe").setPositiveButton("Actualizar") { _, _ ->
+                updateDataCustomer(id, name, amount)
+            }
+            .setNegativeButton("Ingresar uno nuevo") { Dialog, _ ->
                 Dialog.dismiss()
-            })
-            .setIcon(R.drawable.warning)
+            }
+            .setCancelable(false)
             .show()
     }
 
-    override fun updateDataCustomer(name:String, amount: String){
+    override fun updateDataCustomer(id:String, name: String, amount: String){
         val inflater = LayoutInflater.from(this)
-        val view = inflater.inflate(R.layout.sqlite_update_customers_dialog,null)
-        val textname = view.findViewById<EditText>(R.id.sqlite_update_name_text)
-        val txtCredit = view.findViewById<EditText>(R.id.sqlite_update_credit_text)
+        val view = inflater.inflate(R.layout.realtime_database_update,null)
+        val textname = view.findViewById<EditText>(R.id.realtime_update_name_text)
+        val textCredit = view.findViewById<EditText>(R.id.realtime_update_credit_text)
 
         textname.setText(name)
-        txtCredit.setText(amount)
+        textCredit.setText(amount)
 
         AlertDialog.Builder(this).setTitle("Actualizar Cliente")
             .setView(view)
-            .setPositiveButton("ACTUALIZAR", DialogInterface.OnClickListener { _, _ ->
-                presenter.updateExistingClient(textname.text.toString(), txtCredit.text.toString())
-            }).setNegativeButton("Cancelar", DialogInterface.OnClickListener { Dialog, _ ->
+            .setPositiveButton("ACTUALIZAR") { _, _ ->
+                presenter.updateExistingClient(id, textname.text.toString(), textCredit.text.toString())
+            }.setNegativeButton("Cancelar") { Dialog, _ ->
                 Dialog.dismiss()
-            })
+            }
+            .setCancelable(false)
             .show()
     }
 

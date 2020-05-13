@@ -9,6 +9,9 @@
     <string name="information_high">INFORMACIÓN</string>
     <string name="close_high">CERRAR</string>
     <string name="client_sended">Cliente Enviado</string>
+    <string name="enter_id">Ingresa un ID</string>
+    <string name="loading">Cargando</string>
+    <string name="sending">Enviando</string>
 
     <!--Main Activity-->
     <string name="activity_main_title">INICIO</string>
