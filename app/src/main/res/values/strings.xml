@@ -8,6 +8,7 @@
     <string name="empty_fields">Faltan campos por llenar</string>
     <string name="information_high">INFORMACIÓN</string>
     <string name="close_high">CERRAR</string>
+    <string name="client_sended">Cliente Enviado</string>
 
     <!--Main Activity-->
     <string name="activity_main_title">INICIO</string>

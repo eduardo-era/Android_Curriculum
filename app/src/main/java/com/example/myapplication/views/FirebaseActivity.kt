@@ -44,7 +44,7 @@ class FirebaseActivity:BaseActivity() {
 
     private fun clickCloudMessaging(){
         firebase_button_cloud_message.setOnClickListener {
-            GeneralUtilities.informationDialog(this, Html.fromHtml(RemoteConfigHelper().infoCloudMessaging).toString())
+            GeneralUtilities.informationDialog(this, RemoteConfigHelper().infoCloudMessaging)
         }
     }
 

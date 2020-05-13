@@ -49,7 +49,7 @@ class GeneralUtilities {
             val buttonDialog = viewInformation.findViewById<Button>(R.id.information_button)
 
             if(content.isNotEmpty()){
-                contentDialog.text = String.format(content)
+                contentDialog.text = content
             }
 
             dialog.setView(viewInformation)
