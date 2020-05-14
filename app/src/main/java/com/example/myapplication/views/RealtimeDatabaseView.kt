@@ -4,8 +4,11 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyCharacterMap
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,14 +20,17 @@ import com.example.myapplication.pojos.Customers
 import com.example.myapplication.presenters.RealtimeDatabasePresenter
 import com.example.myapplication.utils.BaseActivity
 import com.example.myapplication.utils.GeneralUtilities
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_realtime_database.*
-import java.util.ArrayList
+import kotlinx.android.synthetic.main.bottom_sheet_recycler.*
+import java.util.*
+
 
 class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
 
     private val presenter = RealtimeDatabasePresenter(this)
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
     private var recyclerFirebase: RecyclerView? = null
-
     private var hintId: String? = null
     private var hintName: String? = null
     private var hintAmount: String? = null
@@ -39,11 +45,12 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
     }
 
     private fun init(){
-        recyclerFirebase = findViewById(R.id.recyclerView)
         setRemoteConfigResources()
         hintText()
         clickSendRealtime()
         getDataRealtime()
+        bottomSheetCreditLine()
+        recyclerFirebase = findViewById(R.id.recyclerView)
     }
 
     private fun setRemoteConfigResources(){
@@ -64,6 +71,7 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
         realtime_database_create_button.setOnClickListener {
             sendToRealtime()
         }
+        GeneralUtilities.setImeActionDone(realtime_database_create_crdit){sendToRealtime()}
     }
 
     private fun getDataRealtime() {
@@ -79,7 +87,12 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
         realtime_database_create_crdit.text.clear()
         hintText()
         presenter.sendDataToRealtime(id!!, name!!, amount!!)
-        showProgress()
+    }
+
+    override fun realtimeObtainedCustomers(customers: ArrayList<Customers>) {
+        val adapter = FirebaseAdapter(customers, this)
+        recyclerFirebase!!.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recyclerFirebase!!.adapter = adapter
     }
 
     override fun fieldsEmpty() {
@@ -87,14 +100,21 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
         dismissProgress()
     }
 
-    override fun realtimeObtainedCustomers(customers: ArrayList<Customers>) {
-        val adapter = FirebaseAdapter(customers, this)
-        recyclerFirebase!!.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, true)
-        recyclerFirebase!!.adapter = adapter
+    override fun deleteDataRealtime(id: String) {
+        AlertDialog.Builder(this).setTitle("ATENCIÓN")
+            .setMessage("¿Desea eliminar al cliente?").setPositiveButton("SI") { _, _ ->
+                presenter.deleteDataRealtime(id)
+            }
+            .setNegativeButton("No") { Dialog, _ ->
+                Dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
     }
 
-    override fun deleteDataRealtime(id: String) {
-        presenter.deleteDataRealtime(id)
+    override fun dataDeleted() {
+        Toast.makeText(this, "Cliente Eliminado", Toast.LENGTH_SHORT).show()
+        dismissProgress()
     }
 
     override fun dataSended() {
@@ -133,6 +153,21 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
             }
             .setCancelable(false)
             .show()
+    }
+
+    private fun bottomSheetCreditLine() {
+        bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_firebase)
+        bottomSheetBehavior.peekHeight = 30
+        bottomSheetBehavior.isHideable = false
+        top_button?.setOnClickListener {
+            when (bottomSheetBehavior.state) {
+                BottomSheetBehavior.STATE_COLLAPSED -> {
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
+                BottomSheetBehavior.STATE_EXPANDED -> bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            }
+        }
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
     companion object {

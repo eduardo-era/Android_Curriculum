@@ -32,6 +32,9 @@ class FirebaseAdapter(val customers: ArrayList<Customers>, val view : RealtimeDa
 
         holder.deleteBurron.setOnClickListener {
             view.deleteDataRealtime(customer.customerid.toString())
+            customers.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, customers.size)
         }
     }
 

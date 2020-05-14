@@ -1,5 +1,6 @@
 package com.example.myapplication.presenters
 
+import android.widget.Toast
 import com.example.myapplication.interfaces.RealtimeDatabase
 import com.example.myapplication.models.RealtimeDatabaseModel
 import com.example.myapplication.pojos.Customers
@@ -44,5 +45,9 @@ class RealtimeDatabasePresenter(val view: RealtimeDatabaseView):RealtimeDatabase
 
     override fun deleteDataRealtime(id: String) {
         model.deleteDataRealtime(id)
+    }
+
+    override fun dataDeleted() {
+        view.dataDeleted()
     }
 }

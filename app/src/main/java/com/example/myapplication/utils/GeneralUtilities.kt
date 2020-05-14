@@ -6,9 +6,14 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Build
 import android.text.Html
+import android.view.KeyCharacterMap
+import android.view.KeyEvent
 import android.view.View
+import android.view.ViewConfiguration
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import com.example.myapplication.R
 
@@ -41,6 +46,30 @@ class GeneralUtilities {
             }
         }
 
+        fun setImeActionDone(editTextToSetIMA: EditText, functionToGo:() -> Unit) {
+            editTextToSetIMA.imeOptions = EditorInfo.IME_ACTION_DONE
+            editTextToSetIMA.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    functionToGo()
+                    return@setOnEditorActionListener true
+                }
+                false
+            }
+        }
+
+        fun hasNavBar(context: Context): Boolean {
+            val resources = context.resources
+            val id: Int = resources.getIdentifier("config_showNavigationBar", "bool", "android")
+            return if (id > 0) {
+                resources.getBoolean(id)
+            } else {
+                val hasMenuKey =
+                    ViewConfiguration.get(context).hasPermanentMenuKey()
+                val hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK)
+                !hasMenuKey && !hasBackKey
+            }
+        }
+
         fun informationDialog(activity: Activity,content: String){
             val dialog = AlertDialog.Builder(activity)
             val viewInformation = activity.layoutInflater.inflate(R.layout.dialog_information, null)
@@ -54,12 +83,12 @@ class GeneralUtilities {
 
             dialog.setView(viewInformation)
             val alertDialog = dialog.create()
-            alertDialog.window?.setBackgroundDrawableResource(R.drawable.rounded_corners_edge_blue)
+            alertDialog.window?.setBackgroundDrawableResource(R.drawable.rounded_corners_edge_blue_background_white)
 
             buttonDialog.setOnClickListener {
                 alertDialog.dismiss()
             }
-
+            alertDialog.setCancelable(false)
             alertDialog.show()
         }
     }

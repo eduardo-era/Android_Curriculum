@@ -90,5 +90,6 @@ class RealtimeDatabaseModel(val presenter: RealtimeDatabasePresenter): RealtimeD
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Customers").child(id)
         myRef.removeValue()
+        presenter.dataDeleted()
     }
 }

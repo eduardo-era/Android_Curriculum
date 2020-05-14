@@ -12,6 +12,7 @@ class RealtimeDatabase {
         fun updateDataCustomer(id:String, name: String, amount: String)
         fun realtimeObtainedCustomers(customers: ArrayList<Customers>)
         fun deleteDataRealtime(id: String)
+        fun dataDeleted()
     }
 
     interface Presenter {
@@ -22,6 +23,7 @@ class RealtimeDatabase {
         fun obtainedDataRealtime(customers: ArrayList<Customers>)
         fun getDataRealtime()
         fun deleteDataRealtime(id: String)
+        fun dataDeleted()
     }
 
     interface Model {
