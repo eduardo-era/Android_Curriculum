@@ -3,7 +3,10 @@
     <string name="my_name">Eduardo Rodríguez Anaya</string>
     <string name="splash_title">Eduardo\nCV</string>
     <string name="name">Nombre:</string>
+    <string name="yes_high">SI</string>
+    <string name="no_high">NO</string>
     <string name="credit">Credito:</string>
+    <string name="warning">Advertencia</string>
     <string name="information">Infotmación</string>
     <string name="no_internet">Por favor conectate a internet</string>
     <string name="empty_fields">Faltan campos por llenar</string>

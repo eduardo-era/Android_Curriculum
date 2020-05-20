@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -19,6 +20,8 @@ import kotlinx.android.synthetic.main.sqlite_update_customers_dialog.view.*
 import java.util.ArrayList
 
 class SqliteCustomersAdapter(val context: Context, val customers: ArrayList<Customers>): RecyclerView.Adapter<SqliteCustomersAdapter.ViewHolder>() {
+
+    private val FADE_DURATION = 1000
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.sqlite_update_costumers, parent, false)
@@ -41,6 +44,9 @@ class SqliteCustomersAdapter(val context: Context, val customers: ArrayList<Cust
         holder.deleteBurron.setOnClickListener {
             deleteClient(customer, position)
         }
+
+        setFadeAnimation(holder.itemView)
+
     }
 
     private fun deleteClient(customer:Customers, position: Int){
@@ -85,6 +91,12 @@ class SqliteCustomersAdapter(val context: Context, val customers: ArrayList<Cust
                 }
             }).setNegativeButton("Cancelar", DialogInterface.OnClickListener { _, _ ->  })
             .show()
+    }
+
+    private fun setFadeAnimation(view: View) {
+        val anim = AlphaAnimation(0.0f, 1.0f)
+        anim.duration = FADE_DURATION.toLong()
+        view.startAnimation(anim)
     }
 
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){

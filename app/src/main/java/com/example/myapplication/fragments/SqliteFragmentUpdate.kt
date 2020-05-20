@@ -17,7 +17,7 @@ class SqliteFragmentUpdate : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.recycler_view, container, false)
-        recyclerSqlite = view.findViewById(R.id.sqlite_recycler_update)
+        recyclerSqlite = view.findViewById(R.id.recycler_view)
         return view
     }
 

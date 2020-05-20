@@ -3,12 +3,13 @@ package com.example.myapplication.views
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Html
+import android.view.animation.LayoutAnimationController
 import com.example.myapplication.R
 import com.example.myapplication.helpers.RemoteConfigHelper
 import com.example.myapplication.utils.BaseActivity
 import com.example.myapplication.utils.GeneralUtilities
 import kotlinx.android.synthetic.main.activity_firebase.*
+
 
 class FirebaseActivity:BaseActivity() {
 

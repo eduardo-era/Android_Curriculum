@@ -6,16 +6,15 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Build
 import android.text.Html
-import android.view.KeyCharacterMap
-import android.view.KeyEvent
+import android.util.DisplayMetrics
 import android.view.View
-import android.view.ViewConfiguration
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.myapplication.R
+import com.example.myapplication.adapters.FirebaseAdapter
 
 
 class GeneralUtilities {
@@ -57,17 +56,18 @@ class GeneralUtilities {
             }
         }
 
-        fun hasNavBar(context: Context): Boolean {
-            val resources = context.resources
-            val id: Int = resources.getIdentifier("config_showNavigationBar", "bool", "android")
-            return if (id > 0) {
-                resources.getBoolean(id)
-            } else {
-                val hasMenuKey =
-                    ViewConfiguration.get(context).hasPermanentMenuKey()
-                val hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK)
-                !hasMenuKey && !hasBackKey
-            }
+        fun getSceenWidth(activity: Activity): Int {
+            val displayMetrics = DisplayMetrics()
+            activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
+            val width = displayMetrics.widthPixels
+            return width
+        }
+
+        fun getSceenHeight(activity: Activity): Int {
+            val displayMetrics = DisplayMetrics()
+            activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
+            val height = displayMetrics.heightPixels
+            return height
         }
 
         fun informationDialog(activity: Activity,content: String){
@@ -86,6 +86,25 @@ class GeneralUtilities {
             alertDialog.window?.setBackgroundDrawableResource(R.drawable.rounded_corners_edge_blue_background_white)
 
             buttonDialog.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+        }
+
+        fun deleteDatabaseDialog(activity: Activity, functionToGo:() -> Unit){
+            val dialog = AlertDialog.Builder(activity)
+            val viewDelete = activity.layoutInflater.inflate(R.layout.dialog_delete_database, null)
+            val buttonDialogYes = viewDelete.findViewById<Button>(R.id.dialog_delete_yes)
+            val buttonDialogNo = viewDelete.findViewById<Button>(R.id.dialog_delete_no)
+            dialog.setView(viewDelete)
+            val alertDialog = dialog.create()
+            alertDialog.window?.setBackgroundDrawableResource(R.drawable.rounded_corners_edge_blue_background_white)
+            buttonDialogYes.setOnClickListener {
+                functionToGo()
+                alertDialog.dismiss()
+            }
+            buttonDialogNo.setOnClickListener {
                 alertDialog.dismiss()
             }
             alertDialog.setCancelable(false)

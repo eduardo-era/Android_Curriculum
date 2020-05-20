@@ -1,6 +1,7 @@
 package com.example.myapplication.models
 
 import android.util.Log
+import com.example.myapplication.adapters.FirebaseAdapter
 import com.example.myapplication.interfaces.RealtimeDatabase
 import com.example.myapplication.pojos.Customers
 import com.example.myapplication.presenters.RealtimeDatabasePresenter
@@ -89,7 +90,10 @@ class RealtimeDatabaseModel(val presenter: RealtimeDatabasePresenter): RealtimeD
     override fun deleteDataRealtime(id: String) {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("Customers").child(id)
-        myRef.removeValue()
-        presenter.dataDeleted()
+        myRef.removeValue().addOnCompleteListener {
+            if(it.isSuccessful){
+                presenter.dataDeleted()
+            }
+        }
     }
 }

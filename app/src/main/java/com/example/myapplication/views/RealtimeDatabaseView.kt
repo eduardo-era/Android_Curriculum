@@ -2,11 +2,11 @@ package com.example.myapplication.views
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyCharacterMap
-import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -24,7 +24,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_realtime_database.*
 import kotlinx.android.synthetic.main.bottom_sheet_recycler.*
 import java.util.*
-
 
 class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
 
@@ -49,8 +48,8 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
         hintText()
         clickSendRealtime()
         getDataRealtime()
-        bottomSheetCreditLine()
-        recyclerFirebase = findViewById(R.id.recyclerView)
+        bottomSheetCustomers()
+        recyclerFirebase = findViewById(R.id.recycler_view)
     }
 
     private fun setRemoteConfigResources(){
@@ -101,15 +100,7 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
     }
 
     override fun deleteDataRealtime(id: String) {
-        AlertDialog.Builder(this).setTitle("ATENCIÓN")
-            .setMessage("¿Desea eliminar al cliente?").setPositiveButton("SI") { _, _ ->
-                presenter.deleteDataRealtime(id)
-            }
-            .setNegativeButton("No") { Dialog, _ ->
-                Dialog.dismiss()
-            }
-            .setCancelable(false)
-            .show()
+        presenter.deleteDataRealtime(id)
     }
 
     override fun dataDeleted() {
@@ -155,15 +146,13 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
             .show()
     }
 
-    private fun bottomSheetCreditLine() {
+    private fun bottomSheetCustomers() {
         bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_firebase)
         bottomSheetBehavior.peekHeight = 30
         bottomSheetBehavior.isHideable = false
         top_button?.setOnClickListener {
             when (bottomSheetBehavior.state) {
-                BottomSheetBehavior.STATE_COLLAPSED -> {
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-                }
+                BottomSheetBehavior.STATE_COLLAPSED -> bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                 BottomSheetBehavior.STATE_EXPANDED -> bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             }
         }
