@@ -11,6 +11,8 @@ import com.example.myapplication.interfaces.RetrofitExampleOne
 import com.example.myapplication.pojos.Pokemon
 import com.example.myapplication.presenters.RetrofitExampleOnePresenter
 import com.example.myapplication.utils.BaseActivity
+import com.example.myapplication.utils.GeneralUtilities
+import kotlinx.android.synthetic.main.activity_retrofit_example_one.*
 import java.util.ArrayList
 
 class RetrofitExampleOneView:BaseActivity(), RetrofitExampleOne.View {
@@ -30,6 +32,7 @@ class RetrofitExampleOneView:BaseActivity(), RetrofitExampleOne.View {
 
     private fun init(){
         getPokemonList()
+        clickRetrofitExampleOneInformation()
         recyclerRetrofitExampleOne = findViewById(R.id.recycler_view)
     }
 
@@ -68,6 +71,12 @@ class RetrofitExampleOneView:BaseActivity(), RetrofitExampleOne.View {
                 }
             }
         })
+    }
+
+    private fun clickRetrofitExampleOneInformation(){
+        retrofit__example_one_help.setOnClickListener {
+            GeneralUtilities.informationDialog(this,resources.getString(R.string.retrofit_exaple_one_information))
+        }
     }
 
     override fun refreshPokemon(pokemons: ArrayList<Pokemon>) {

@@ -48,6 +48,7 @@
     <string name="example_one">EJEMPLO 1</string>
     <string name="pokemon_list">Lista Pokémon</string>
     <string name="retrofit_main_help"><![CDATA[<b>Ejemplo 1</b> <br><br>El ejemlpo uno conta de una lista de pokemon la cual se obtiene desde un servicio.]]></string>
-
+    <string name="retrofit_exaple_one_information"><![CDATA[En este ejemplo se encuantra una lista con los 802 Pokémon a la fecha.
+    son llamados desde la url: https://pokeapi.co/api/v2/ a travez de Retrofit2.]]></string>
 
 </resources>
