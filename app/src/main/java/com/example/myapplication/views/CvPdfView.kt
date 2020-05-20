@@ -17,7 +17,7 @@ class CvPdfView:BaseActivity() {
         pdfview.useBestQuality(true);
         pdfview.enableSwipe(true);
         pdfview.fitToWidth();
-        pdfview.fromAsset("Curriculum_Vitae.pdf").load();
+        pdfview.fromAsset("Curriculum _Vitae.pdf").load();
     }
 
     companion object {

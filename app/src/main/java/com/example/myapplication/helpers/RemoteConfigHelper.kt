@@ -1,7 +1,6 @@
 package com.example.myapplication.helpers
 
 import com.example.myapplication.R
-import com.google.android.gms.tasks.Task
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 
 class RemoteConfigHelper {
@@ -21,6 +20,7 @@ class RemoteConfigHelper {
     var ingressName: String = getRemoteConfigInstance().getString("enter_name")
     var ingressAmount: String = getRemoteConfigInstance().getString("enter_amount")
     var send: String = getRemoteConfigInstance().getString("send_high")
+    var remoteConfigTextButton = getRemoteConfigInstance().getString("remote_config")
 
     private fun getRemoteConfigInstance(): FirebaseRemoteConfig {
         if (remoteConfig == null) {
@@ -49,6 +49,7 @@ class RemoteConfigHelper {
         ingressName = getRemoteConfigInstance().getString("enter_name")
         ingressAmount = getRemoteConfigInstance().getString("enter_amount")
         send = getRemoteConfigInstance().getString("send_high")
+        remoteConfigTextButton = getRemoteConfigInstance().getString("remote_config")
     }
 
 }

@@ -78,11 +78,13 @@ class GeneralUtilities {
             val buttonDialog = viewInformation.findViewById<Button>(R.id.information_button)
 
             if(content.isNotEmpty()){
-                contentDialog.text = content
+                formatHTML(content,contentDialog)
             }
 
             dialog.setView(viewInformation)
             val alertDialog = dialog.create()
+
+            alertDialog.window?.setLayout(400,800)
             alertDialog.window?.setBackgroundDrawableResource(R.drawable.rounded_corners_edge_blue_background_white)
 
             buttonDialog.setOnClickListener {

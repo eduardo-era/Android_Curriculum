@@ -13,10 +13,40 @@
 
     <entry>
         <key>firebase_information</key>
-        <value>\bREMOTE CONFIG\b
-            \n\nTodos los trextos en esta  actividad incluyendo botones y
+        <value>REMOTE CONFIG:Todos los trextos en esta  actividad incluyendo botones y
             este mismo texto son traidos a travez de Remote Config.\n\n</value>
     </entry>
+
+    <entry>
+        <key>send_high</key>
+        <value>ENVIAR</value>
+    </entry>
+
+    <entry>
+        <key>remote_config</key>
+        <value>Remote Config</value>
+    </entry>
+
+    <entry>
+        <key>enter_id</key>
+        <value>Ingresa un ID</value>
+    </entry>
+
+    <entry>
+        <key>enter_amount</key>
+        <value>Ingresa un monto</value>
+    </entry>
+
+    <entry>
+        <key>enter_name</key>
+        <value>Ingresa un nombre</value>
+    </entry>
+
+    <entry>
+        <key>cloud_messaging_information</key>
+        <value>CLOUD MESSAGING: Para mandarte una notificacion escribeme al numero 5521001770</value>
+    </entry>
+
 
 
 </defaultsMap><!-- END xml_defaults -->

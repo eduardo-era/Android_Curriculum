@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.myapplication.R
 import com.example.myapplication.utils.GeneralUtilities
-import com.google.firebase.database.BuildConfig
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.hypot
 import kotlin.math.max
@@ -35,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         clickFloattingButton()
         clickMainButtonCV()
         clickButtonPhone()
+        clickRetrofit()
     }
 
     private fun clickButtonSqlite(){
@@ -47,6 +47,16 @@ class MainActivity : AppCompatActivity() {
         main_button_firebase.setOnClickListener {
             if (GeneralUtilities.isNetworkAvaliable(this)){
                 FirebaseActivity.start(this)
+            }else{
+                Toast.makeText(this, R.string.no_internet,Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun clickRetrofit(){
+        main_button_retrofit.setOnClickListener {
+            if(GeneralUtilities.isNetworkAvaliable(this)){
+                RetrofitView.start(this)
             }else{
                 Toast.makeText(this, R.string.no_internet,Toast.LENGTH_LONG).show()
             }

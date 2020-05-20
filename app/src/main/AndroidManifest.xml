@@ -24,11 +24,12 @@
         <activity android:name=".views.MainActivity" />
         <activity android:name=".views.SqliteActivity" />
         <activity android:name=".views.FirebaseActivity" />
-        <activity android:name=".views.RetrofitActivity" />
+        <activity android:name=".views.RetrofitView" />
         <activity android:name=".views.CvPdfView" />
         <activity
             android:name=".views.RealtimeDatabaseView"
             android:windowSoftInputMode="stateHidden"  />
+        <activity android:name=".views.RetrofitExampleOneView" />
 
         <service android:name=".utils.PushNotification"
             android:exported="false">
