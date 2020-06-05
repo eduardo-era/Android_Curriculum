@@ -6,19 +6,23 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.view.ViewAnimationUtils
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.myapplication.R
+import com.example.myapplication.utils.BaseActivity
 import com.example.myapplication.utils.GeneralUtilities
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toast_no_internet.*
 import kotlin.math.hypot
 import kotlin.math.max
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     var isOpen: Boolean? = null
 
@@ -48,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             if (GeneralUtilities.isNetworkAvaliable(this)){
                 FirebaseActivity.start(this)
             }else{
-                Toast.makeText(this, R.string.no_internet,Toast.LENGTH_LONG).show()
+                toastNoInternet()
             }
         }
     }
@@ -58,8 +62,14 @@ class MainActivity : AppCompatActivity() {
             if(GeneralUtilities.isNetworkAvaliable(this)){
                 RetrofitView.start(this)
             }else{
-                Toast.makeText(this, R.string.no_internet,Toast.LENGTH_LONG).show()
+                toastNoInternet()
             }
+        }
+    }
+
+    private fun clickAsyncButton(){
+        main_button_async.setOnClickListener {
+
         }
     }
 
@@ -128,6 +138,15 @@ class MainActivity : AppCompatActivity() {
             anim.start()
             isOpen = false
         }
+    }
+
+    private fun toastNoInternet(){
+        val customToastLayout = layoutInflater.inflate(R.layout.toast_no_internet,custom_toast_container)
+        val customToast = Toast(this)
+        customToast.view = customToastLayout
+        customToast.setGravity(Gravity.CENTER,0,0)
+        customToast.duration = Toast.LENGTH_SHORT
+        customToast.show()
     }
 
     companion object {

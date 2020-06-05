@@ -8,7 +8,7 @@
     <string name="credit">Credito:</string>
     <string name="warning">Advertencia</string>
     <string name="information">Infotmación</string>
-    <string name="no_internet">Por favor conectate a internet</string>
+    <string name="no_internet">Sin Conexión</string>
     <string name="empty_fields">Faltan campos por llenar</string>
     <string name="information_high">INFORMACIÓN</string>
     <string name="close_high">CERRAR</string>
@@ -16,6 +16,7 @@
     <string name="enter_id">Ingresa un ID</string>
     <string name="loading">Cargando</string>
     <string name="sending">Enviando</string>
+    <string name="start">COMENZAR</string>
 
     <!--Main Activity-->
     <string name="activity_main_title">INICIO</string>
