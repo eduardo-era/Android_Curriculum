@@ -44,10 +44,15 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/async_toolbar"
         android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:text=""
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:id="@+id/async_button_start"
+        android:text="Hacer Asyncrono"
         android:layout_marginTop="30dp"
         android:layout_below="@id/async_text"
         android:layout_marginHorizontal="70dp"

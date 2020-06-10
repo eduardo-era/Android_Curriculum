@@ -5,6 +5,7 @@ import java.time.temporal.TemporalAmount
 import java.util.ArrayList
 
 class RealtimeDatabase {
+
     interface View {
         fun fieldsEmpty()
         fun dataSended()

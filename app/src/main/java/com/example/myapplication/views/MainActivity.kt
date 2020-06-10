@@ -39,6 +39,8 @@ class MainActivity : BaseActivity() {
         clickMainButtonCV()
         clickButtonPhone()
         clickRetrofit()
+        clickAsyncButton()
+        clickButtonMaps()
     }
 
     private fun clickButtonSqlite(){
@@ -69,7 +71,7 @@ class MainActivity : BaseActivity() {
 
     private fun clickAsyncButton(){
         main_button_async.setOnClickListener {
-
+            AsyncView.start(this)
         }
     }
 
@@ -94,6 +96,12 @@ class MainActivity : BaseActivity() {
             } catch (e: java.lang.Exception) {
                 e.printStackTrace()
             }
+        }
+    }
+
+    private fun clickButtonMaps(){
+        main_button_maps.setOnClickListener {
+            MapsActivity.start(this)
         }
     }
 
