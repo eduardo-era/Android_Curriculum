@@ -1,10 +1,22 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Curriculum\nAndroid</string>
+    <string name="my_name">Eduardo Rodríguez Anaya</string>
     <string name="splash_title">Eduardo\nCV</string>
     <string name="name">Nombre:</string>
+    <string name="yes_high">SI</string>
+    <string name="no_high">NO</string>
     <string name="credit">Credito:</string>
+    <string name="warning">Advertencia</string>
     <string name="information">Infotmación</string>
-    <string name="no_internet">Por favor conectate a internet</string>
+    <string name="no_internet">Sin Conexión</string>
+    <string name="empty_fields">Faltan campos por llenar</string>
+    <string name="information_high">INFORMACIÓN</string>
+    <string name="close_high">CERRAR</string>
+    <string name="client_sended">Cliente Enviado</string>
+    <string name="enter_id">Ingresa un ID</string>
+    <string name="loading">Cargando</string>
+    <string name="sending">Enviando</string>
+    <string name="start">COMENZAR</string>
 
     <!--Main Activity-->
     <string name="activity_main_title">INICIO</string>
@@ -16,9 +28,29 @@
     <string name="enter_client">Ingresa un Cliente</string>
     <string name="enter_name">Ingresa un nombre</string>
     <string name="enter_amount">Ingresa un monto</string>
-    <string name="empty_fields">Faltan campos por llenar</string>
     <string name="insert">INSERTAR</string>
+    <string name="information_sqlite"><![CDATA[Este es un pequeño ejemplo de SQLite con una tabla simple compuersta por:<br><br>
+
+    id<br><br>
+    customer_name<br><br>
+    max_credit<br><br>
+
+    En este ejemplo puedes crear, borrar  y actualizar entradas a la base de datos en SQLite.]]></string>
 
     <!--Firebase-->
+    <string name="firebase_information"><![CDATA[ <b>REMOTE CONFIG</b>
+            <br><br>Todos los trextos en esta  actividad incluyendo botones y
+            este mismo texto son traidos a travez de Remote Config.<br><br><br><br>
+            <b>CLOUD MESSAGING</b>
+             <br><br>Para mandarte una notificacion escribeme al numero 5521001770]]></string>
+
+    <!--Retrofit-->
+    <string name="retrofit">RETROFIT</string>
+    <string name="example_one">EJEMPLO 1</string>
+    <string name="pokemon_list">Lista Pokémon</string>
+    <string name="retrofit_main_help"><![CDATA[<b>Ejemplo 1</b> <br><br>El ejemlpo uno conta de una lista de pokemon la cual se obtiene desde un servicio.]]></string>
+    <string name="retrofit_exaple_one_information"><![CDATA[En este ejemplo se encuantra una lista con los 802 Pokémon a la fecha.
+    son llamados desde la url: https://pokeapi.co/api/v2/ a travez de Retrofit2.]]></string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

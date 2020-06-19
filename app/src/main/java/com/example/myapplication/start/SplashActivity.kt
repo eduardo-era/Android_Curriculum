@@ -5,6 +5,7 @@ import android.os.Handler
 import com.example.myapplication.R
 import com.example.myapplication.utils.BaseActivity
 import com.example.myapplication.views.MainActivity
+import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity: BaseActivity() {
 
@@ -13,6 +14,13 @@ class SplashActivity: BaseActivity() {
         setContentView(R.layout.activity_splash)
 
         goToMainActivity()
+        setVersion()
+    }
+
+    private fun setVersion(){
+        val packetInfo = packageManager.getPackageInfo(this.packageName, 0)
+        val versionName = packetInfo.versionName
+        app_version.text = versionName
     }
 
     private fun  goToMainActivity(){

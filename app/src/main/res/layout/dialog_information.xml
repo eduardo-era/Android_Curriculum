@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/information_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="@string/information_high"
+        android:textSize="22sp" />
+
+    <ScrollView
+        android:id="@+id/information_container"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/information_title">
+
+        <TextView
+            android:id="@+id/information_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="20dp" />
+    </ScrollView>
+
+    <Button
+        android:id="@+id/information_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/information_container"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/close_high"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
 </RelativeLayout>

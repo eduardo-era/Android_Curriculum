@@ -1,10 +1,22 @@
 package com.example.myapplication.utils
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.net.ConnectivityManager
+import android.os.Build
+import android.text.Html
+import android.util.DisplayMetrics
+import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import com.example.myapplication.R
 
 
 class GeneralUtilities {
@@ -25,6 +37,63 @@ class GeneralUtilities {
             val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val networkInfo = connectivityManager.activeNetworkInfo
             return networkInfo != null && networkInfo.isAvailable && networkInfo.isConnected
+        }
+
+        fun formatHTML(value: String, textview: TextView) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                textview.text = Html.fromHtml(value, Html.FROM_HTML_MODE_LEGACY)
+            } else {
+                textview.text = Html.fromHtml(value)
+            }
+        }
+
+        fun setImeActionDone(editTextToSetIMA: EditText, functionToGo:() -> Unit) {
+            editTextToSetIMA.imeOptions = EditorInfo.IME_ACTION_DONE
+            editTextToSetIMA.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    functionToGo()
+                    return@setOnEditorActionListener true
+                }
+                false
+            }
+        }
+
+        fun getSceenWidth(activity: Activity): Int {
+            val displayMetrics = DisplayMetrics()
+            activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
+            val width = displayMetrics.widthPixels
+            return width
+        }
+
+        fun getSceenHeight(activity: Activity): Int {
+            val displayMetrics = DisplayMetrics()
+            activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
+            val height = displayMetrics.heightPixels
+            return height
+        }
+
+        fun informationDialog(activity: Activity,content: String){
+            val dialog = AlertDialog.Builder(activity)
+            val viewInformation = activity.layoutInflater.inflate(R.layout.dialog_information, null)
+
+            val contentDialog = viewInformation.findViewById<TextView>(R.id.information_content)
+            val buttonDialog = viewInformation.findViewById<Button>(R.id.information_button)
+
+            if(content.isNotEmpty()){
+                formatHTML(content,contentDialog)
+            }
+
+            dialog.setView(viewInformation)
+            val alertDialog = dialog.create()
+
+            alertDialog.window?.setLayout(400,800)
+            alertDialog.window?.setBackgroundDrawableResource(R.drawable.rounded_corners_edge_blue_background_white)
+
+            buttonDialog.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            alertDialog.setCancelable(false)
+            alertDialog.show()
         }
     }
 }
