@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/async_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,10 +19,11 @@
             <TextView
                 android:id="@+id/retrofit_title_toolbar"
                 android:layout_width="match_parent"
-                android:layout_centerVertical="true"
-                android:text="Async Task"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:paddingStart="20dp"
+                android:paddingEnd="0dp"
+                android:text="@string/async_task"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
 
@@ -41,22 +42,26 @@
 
     <TextView
         android:id="@+id/async_text"
-        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/async_toolbar"
-        android:layout_width="match_parent"
         android:layout_marginHorizontal="20dp"
-        android:layout_height="wrap_content"/>
+        android:layout_marginTop="20dp" />
 
-    <Button
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:background="@color/colorPrimary"
-        android:id="@+id/async_button_start"
-        android:text="Hacer Asyncrono"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/async_text"
-        android:layout_marginHorizontal="70dp"
+    <LinearLayout
+        android:id="@+id/button_container_async"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/async_text"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" />
+
+    <TextView
+        android:id="@+id/information_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_container_async"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="20dp" />
 
 </RelativeLayout>

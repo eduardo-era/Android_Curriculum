@@ -9,7 +9,6 @@ import com.example.myapplication.utils.BaseActivity
 import com.example.myapplication.utils.GeneralUtilities
 import kotlinx.android.synthetic.main.activity_firebase.*
 
-
 class FirebaseActivity:BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

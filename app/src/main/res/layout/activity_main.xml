@@ -25,21 +25,22 @@
         android:layout_below="@id/main_textview_title">
 
         <ScrollView
-            android:layout_marginHorizontal="70dp"
-            android:layout_marginBottom="250dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="180dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingTop="30dp">
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/main_button_sqlite"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rounded_corners_edge_blue"
                     android:text="@string/sqlite"
@@ -50,6 +51,7 @@
                     android:id="@+id/main_button_firebase"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rounded_corners_edge_blue"
@@ -61,6 +63,7 @@
                     android:id="@+id/main_button_retrofit"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rounded_corners_edge_blue"
@@ -72,10 +75,11 @@
                     android:id="@+id/main_button_async"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rounded_corners_edge_blue"
-                    android:text="ASYNC TASK"
+                    android:text="@string/async_task"
                     android:textColor="@color/colorPrimary"
                     android:textSize="22sp" />
 
@@ -83,10 +87,11 @@
                     android:id="@+id/main_button_maps"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rounded_corners_edge_blue"
-                    android:text="MAPS"
+                    android:text="@string/maps"
                     android:textColor="@color/colorPrimary"
                     android:textSize="22sp" />
 

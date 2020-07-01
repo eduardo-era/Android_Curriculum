@@ -9,9 +9,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.ViewAnimationUtils
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.myapplication.R
 import com.example.myapplication.utils.BaseActivity
@@ -21,10 +19,9 @@ import kotlinx.android.synthetic.main.toast_no_internet.*
 import kotlin.math.hypot
 import kotlin.math.max
 
-
 class MainActivity : BaseActivity() {
 
-    var isOpen: Boolean? = null
+    private var isOpen: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +38,11 @@ class MainActivity : BaseActivity() {
         clickRetrofit()
         clickAsyncButton()
         clickButtonMaps()
+        adviceInProgress()
+    }
+
+    private fun adviceInProgress(){
+        GeneralUtilities.informationDialog(this,resources.getString(R.string.in_progress))
     }
 
     private fun clickButtonSqlite(){

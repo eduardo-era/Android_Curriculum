@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.R
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -26,7 +25,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val mexico = LatLng(19.4284706, -99.1276627)
+        val mexico = LatLng(19.432777, -99.133217)
         mMap.addMarker(MarkerOptions().position(mexico).title("Mexico"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mexico,4f))
     }

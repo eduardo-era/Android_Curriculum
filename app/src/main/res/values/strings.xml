@@ -17,11 +17,20 @@
     <string name="loading">Cargando</string>
     <string name="sending">Enviando</string>
     <string name="start">COMENZAR</string>
+    <string name="update_h">ACTUALIZAR</string>
+    <string name="cancel_h">CANCELAR</string>
+    <string name="update_customer">ACTUALIZAR CLIENTE</string>
 
     <!--Main Activity-->
     <string name="activity_main_title">INICIO</string>
     <string name="sqlite">SQLite</string>
     <string name="firebase">Firebase</string>
+    <string name="maps">MAPS</string>
+    <string name="async_task">Async Task</string>
+    <string name="in_progress">Esta aplicación continua en proceso de creación,
+        algunos módulos aún no se han finalizado y faltan algunos mas por agregar.
+        gracias por su entendimiento.
+    </string>
 
     <!--SQLITE-->
     <string name="sqlite_crud">SQLite CRUD</string>
@@ -52,5 +61,13 @@
     <string name="retrofit_exaple_one_information"><![CDATA[En este ejemplo se encuantra una lista con los 802 Pokémon a la fecha.
     son llamados desde la url: https://pokeapi.co/api/v2/ a travez de Retrofit2.]]></string>
     <string name="title_activity_maps">Map</string>
+
+    <!--Async-->
+    <string name="make_async">HACER ASYNCRONO</string>
+
+    <!--MAPS-->
+
+    <!--pdf-->
+    <string name="curriculum">Curriculum Vitae</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.myapplication.views
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
@@ -135,20 +136,25 @@ class RealtimeDatabaseView:BaseActivity(),RealtimeDatabase.View {
         textname.setText(name)
         textCredit.setText(amount)
 
-        AlertDialog.Builder(this).setTitle("Actualizar Cliente")
+        AlertDialog.Builder(this).setTitle(resources.getString(R.string.update_customer))
             .setView(view)
-            .setPositiveButton("ACTUALIZAR") { _, _ ->
+            .setPositiveButton(resources.getString(R.string.update_h)) { _, _ ->
                 presenter.updateExistingClient(id, textname.text.toString(), textCredit.text.toString())
-            }.setNegativeButton("Cancelar") { Dialog, _ ->
+            }.setNegativeButton(resources.getString(R.string.cancel_h)) { Dialog, _ ->
                 Dialog.dismiss()
             }
             .setCancelable(false)
             .show()
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     private fun bottomSheetCustomers() {
         bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_firebase)
-        bottomSheetBehavior.peekHeight = 30
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
+            bottomSheetBehavior.peekHeight = 30
+        } else{
+            bottomSheetBehavior.peekHeight = 100
+        }
         bottomSheetBehavior.isHideable = false
         top_button?.setOnClickListener {
             when (bottomSheetBehavior.state) {
