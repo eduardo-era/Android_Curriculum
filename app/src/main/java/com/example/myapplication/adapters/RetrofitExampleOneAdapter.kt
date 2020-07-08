@@ -15,7 +15,7 @@ import com.example.myapplication.pojos.PokemonRequest
 
 class RetrofitExampleOneAdapter(val context: Context, val pokemons: ArrayList<Pokemon>): RecyclerView.Adapter<RetrofitExampleOneAdapter.ViewHolder>() {
 
-    var allPokemon = pokemons
+    private var allPokemon = pokemons
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.retrofit_example_one_item_recycler, parent, false)
@@ -30,6 +30,7 @@ class RetrofitExampleOneAdapter(val context: Context, val pokemons: ArrayList<Po
         val pokemon = allPokemon[position]
         holder.pokemonName.text = pokemon.name
         val numberPokemon = pokemon.url?.substringAfter("pokemon/")?.substringBefore("/")
+
         Glide.with(context).load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$numberPokemon.png")
             .centerCrop()
             .centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)

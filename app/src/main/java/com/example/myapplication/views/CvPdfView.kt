@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import com.example.myapplication.R
 import com.example.myapplication.utils.BaseActivity
 import com.github.barteksc.pdfviewer.PDFView
@@ -25,6 +26,7 @@ class CvPdfView:BaseActivity() {
 
     private fun setTitleToolbarAndHelp(){
         toolbar_title.text = resources.getString(R.string.curriculum)
+        help_toolbar.visibility = View.GONE
     }
 
     companion object {

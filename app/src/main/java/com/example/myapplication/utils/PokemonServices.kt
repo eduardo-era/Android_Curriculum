@@ -12,4 +12,5 @@ interface PokemonServices {
 
     @GET("pokemon")
     fun getPokemonList(@Query("limit")limit:Int, @Query("offset")offSet:Int):Call<PokemonRequest>
+
 }

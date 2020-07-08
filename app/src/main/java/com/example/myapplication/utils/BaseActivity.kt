@@ -20,8 +20,8 @@ open class BaseActivity: AppCompatActivity() {
 
     fun showProgress() {
         progressDialog?.let {
-            if (!it?.isShowing) {
-                it?.show()
+            if (!it.isShowing) {
+                it.show()
             }
         }
     }
