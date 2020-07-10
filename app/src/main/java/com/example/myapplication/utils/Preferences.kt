@@ -5,7 +5,6 @@ import android.content.Context
 class Preferences {
 
     companion object {
-
         //ADD
         @JvmStatic
         fun addString(preference: String, name: String, context: Context){

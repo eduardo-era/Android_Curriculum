@@ -3,20 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/curriculum_toolbar"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp"
+        android:gravity="center">
 
-        <include layout="@layout/toolbar"/>
-
-    </LinearLayout>
+        <TextView
+            android:id="@+id/curriculum_title_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
+            android:text="CURRICULUM VITAE"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+    </RelativeLayout>
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfViewer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/curriculum_toolbar" />
+
 
 </RelativeLayout>

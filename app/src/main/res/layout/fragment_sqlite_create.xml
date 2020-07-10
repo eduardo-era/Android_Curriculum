@@ -56,5 +56,4 @@
         android:text="@string/insert"
         android:textColor="@color/white" />
 
-
 </RelativeLayout>

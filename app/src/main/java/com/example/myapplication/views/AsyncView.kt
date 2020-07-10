@@ -3,6 +3,8 @@ package com.example.myapplication.views
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
@@ -10,7 +12,10 @@ import android.widget.Toast
 import com.example.myapplication.R
 import com.example.myapplication.interfaces.Async
 import com.example.myapplication.presenters.AsyncPresenter
+import com.example.myapplication.utils.BackgroundTask
 import com.example.myapplication.utils.BaseActivity
+import kotlinx.android.synthetic.main.activity_async.*
+import java.util.*
 
 class AsyncView:BaseActivity(),Async.View {
 
@@ -18,7 +23,7 @@ class AsyncView:BaseActivity(),Async.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activuty_async)
+        setContentView(R.layout.activity_async)
 
         init()
     }
@@ -45,10 +50,28 @@ class AsyncView:BaseActivity(),Async.View {
 
         asyncButton.setOnClickListener {
             presenter.workingBackground()
+            showProgress()
+
+//            BackgroundTask(this){
+//
+//            }.execute()
         }
     }
 
+    fun acivateCountDown() {
+        val timer = object : CountDownTimer(5000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                countdown_async?.text = String.format((Locale.getDefault()), "%d", millisUntilFinished / 1000L)
+            }
+            override fun onFinish() {
+
+            }
+        }
+        timer.start()
+    }
+
     override fun finishMessage(){
+        dismissProgress()
         Toast.makeText(this,"Tarea en segundo plano finalizada",Toast.LENGTH_SHORT).show()
     }
 

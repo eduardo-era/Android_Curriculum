@@ -38,6 +38,7 @@ class MainActivity : BaseActivity() {
         clickRetrofit()
         clickAsyncButton()
         clickButtonMaps()
+        clickButtonFragment()
         adviceInProgress()
     }
 
@@ -104,6 +105,12 @@ class MainActivity : BaseActivity() {
     private fun clickButtonMaps(){
         main_button_maps.setOnClickListener {
             MapsActivity.start(this)
+        }
+    }
+
+    private fun clickButtonFragment(){
+        main_button_fragments.setOnClickListener {
+            FragmentExampleActivity.start(this)
         }
     }
 
